@@ -5,8 +5,10 @@ from .models import Product
 
 @api_view(['GET'])
 def products_list(request):
+
     products = Product.objects.all()
 
     serializer = ProductSerializer(products, many=True)
 
-    return Response('SERVER IS UP!!!')
+
+    return Response(serializer.data)
